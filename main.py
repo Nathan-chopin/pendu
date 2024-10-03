@@ -7,29 +7,36 @@ import fn_pendu as fn
 
 #from class_afficher import AFFICHER
 
-vie = fn.vie
-mot_deviner = fn.trouver
+vie = 8
+le_mot , mot_devine = fn.mot_a_trouver()
+mode_console = True
+
 
 
 while(vie != 0):
-    fn.afficher('cons_mot_a_trouver')
+    fn.affichage_mot_trouver(mode_console , mot_devine)
     lettre = input("Devine une lettre, si tu penses avoir trouvé le mot tape 'mot deviner'(en cas d'érreur 2 vie seront perdues !) \n Tape ici : ")
     if lettre == 'mot deviner':
         lettre = input("Quelle est le mot ? :")
-        if lettre == fn.mot:
-            fn.afficher("cons_victoire")
+        if lettre == le_mot:
+            fn.affichage_victoire(mode_console,le_mot,vie)
             break
         else:
-            vie -= 2
-            fn.afficher("cons_not_trouver")
-    if fn.est_dans_mot(lettre,mot_deviner) == -1:
-        fn.afficher("cons_erreur_lettre_donner")
-    elif fn.est_dans_mot(lettre,mot_deviner) == 42:
-        fn.afficher("cons_victoire")
-    elif fn.est_dans_mot(lettre,mot_deviner):
-        fn.afficher("cons_inmot")
+            vie -= 2            
+            fn.affichage(mode_console,'Tu n\'as pas trouvé le mot. :(')
+    if fn.est_dans_mot(lettre,mot_devine,le_mot) == -1:
+        fn.affichage(mode_console,"Erreur dans la lettre donnée !")
+    
+    elif fn.est_dans_mot(lettre,mot_devine) == 42:    
+        fn.affichage_victoire(mode_console,le_mot,vie)
+        break
+
+    elif fn.est_dans_mot(lettre,mot_devine):
+        fn.affichage(mode_console,"La lettre était en effet dans le mot à trouver. :)")
+        
     else:
         vie -= 1
-        fn.afficher("cons_notinmot")
-    fn.afficher('cons_vie_reste')
+        fn.affichage(mode_console,"La lettre n'est pas dans le mot.")
+        
+    fn.affichage_vie(mode_console,vie)
 
