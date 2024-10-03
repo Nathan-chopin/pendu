@@ -3,12 +3,14 @@
 # 03/10/24
 
 class AFFICHER():
-    def __init__(self) -> None:
-        pass
+    def __init__(self,mot,trouver) -> None:
+        self.mot = mot
+        self.trouver = trouver
     def console(self):
-        def erreur_lettre_donner(self):
+        def erreur_lettre_donner():
             print("Erreur dans la lettre donnée !")
             return
+        return
 
 
 
