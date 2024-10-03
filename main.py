@@ -8,10 +8,12 @@ import fn_pendu as fn
 #from class_afficher import AFFICHER
 
 vie = fn.vie
+mot_deviner = fn.trouver
+
 
 while(vie != 0):
     fn.afficher('cons_mot_a_trouver')
-    lettre = input("Devine une lettre, si tu penses avoir trouvé le mot tape 'mot deviner'(en cas d'érreur 2 vie seront perdu !) \n Tape ici : ")
+    lettre = input("Devine une lettre, si tu penses avoir trouvé le mot tape 'mot deviner'(en cas d'érreur 2 vie seront perdues !) \n Tape ici : ")
     if lettre == 'mot deviner':
         lettre = input("Quelle est le mot ? :")
         if lettre == fn.mot:
@@ -20,12 +22,14 @@ while(vie != 0):
         else:
             vie -= 2
             fn.afficher("cons_not_trouver")
-    if fn.est_dans_mot(lettre) == -1:
+    if fn.est_dans_mot(lettre,mot_deviner) == -1:
         fn.afficher("cons_erreur_lettre_donner")
-    elif fn.est_dans_mot(lettre) == 1:
+    elif fn.est_dans_mot(lettre,mot_deviner) == 42:
         fn.afficher("cons_victoire")
-    elif fn.est_dans_mot(lettre):
+    elif fn.est_dans_mot(lettre,mot_deviner):
         fn.afficher("cons_inmot")
     else:
+        vie -= 1
         fn.afficher("cons_notinmot")
+    fn.afficher('cons_vie_reste')
 

@@ -31,10 +31,11 @@ def supprime_accent(ligne):
 mot = liste_mots[randint(0 , len(liste_mots) - 1)] #choisi un mort aléatoire dans la liste
 mot = supprime_accent(mot)
 
-trouver = ["_"] * len(mot)
+global trouver
+trouver = ["_"] * (len(mot)-1)
 vie = 8
 
-def afficher(code_message):                       # exemples : erreur à afficher dans le terminal : cons_erreur
+def afficher(code_message,list_trouver = trouver,int_vie = vie,str_mot = mot):                       # exemples : erreur à afficher dans le terminal : cons_erreur
     '''renvois un message en fonction du code rentré  afficher(str) = str '''     #: erreur à afficher en graphique     : grap_erreur
     if "cons_" in code_message:     #message dans le terminal
         code_message = code_message[5:]
@@ -48,45 +49,56 @@ def afficher(code_message):                       # exemples : erreur à affiche
             print("La lettre était en effet dans le mot à trouver. :)") # code pour une lettre dans le mot
             return
         elif code_message == 'mot_a_trouver':  # affiche le mot à trouvé
-            mot_trouver = ''
-            for i in trouver:
-                mot_trouver += i
-            print('Quelle est le mot ? : ', mot_trouver)
+            liste_to_str(list_trouver)
+            print('Quel est le mot ? : ', mot_trouver)
             return
         elif code_message == 'vie_reste':   # affiche les vie restantes
-            print('Les chance restantes sont au nombre de :',vie)
+            print('Les chance restantes sont au nombre de :',int_vie)
             return
         elif code_message == 'victoire':     # WIN
             print('Tu as trouvé le mot !')
-            print('Le mot est : ', mot,'.')
-            print('Il te restais ',vie,' chance.')
+            print('Le mot est : ', str_mot)
+            print('Il te restait ',int_vie,' chance.')
             return
         elif code_message == 'not_trouver':    # mot pas trouvé
             print('Tu n\'as pas trouvé le mot. :(')
             return
 
 
-def est_dans_mot(lettre):
+def est_dans_mot(lettre,trouver):
     '''la lettre donnée par l'utilisateur est-elle dans le mot à trouver ? lettre_deviner(str) = bool'''
     lettre = lettre.lower().rstrip()            #supprime les MAJ
     lettre = supprime_accent(lettre)    #supprime les accents
-    
-    if len(lettre) == 1 and lettre not in ['\'','.',',',':',';','\"']: #pas de caractère de ponctuation
+    if len(lettre) == 1 and lettre not in ['\'','.',',',':',';','\"',1,-1,'1','-1']: #pas de caractère de ponctuation
         if lettre in mot :      #lettre dans le mot
             trouver = modif_trouver(trouver,lettre)
             if list(mot) == trouver:  # condition de victoire
-                return 1
+                return 42
             return True
         else:                   #lettre pas dans le mot
-            vie -= 1
             return False
     else:                                       #cas où la lettre n'est pas une lettre ou est rien du tout ("","je ne suis pas une lettre")
         afficher("cons_erreur_lettre_donner")
         return -1
 
-def modif_trouver(trouver,lettre):
+
+def modif_trouver(str_trouver,lettre):
     '''remplace des _ par la lettre trouvé à l'emplacement correspondant'''
     for id_mot in range(len(mot)):
         if lettre == mot[id_mot]:
-            trouver[id_mot] = lettre
+            str_trouver[id_mot] = lettre
     return trouver
+
+
+def liste_to_str(liste):
+    str = ''
+    for i in liste:
+        str += i
+    return str
+
+def affichage(bool_mode_console,text):
+    if bool_mode_console:
+        print(text)
+        return
+    else:
+        return

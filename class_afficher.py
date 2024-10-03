@@ -13,12 +13,12 @@ class AFFICHER():
         return
 
 
-
+'''
 
 
 
 def afficher(code_message):                       # exemples : erreur à afficher dans le terminal : cons_erreur
-    '''renvois un message en fonction du code rentré  afficher(str) = str '''     #: erreur à afficher en graphique     : grap_erreur
+         #: erreur à afficher en graphique     : grap_erreur
     if "cons_" in code_message:     #message dans le terminal
         code_message = code_message[5:]
         if code_message == "erreur_lettre_donner": #code pour une erreur syntaxique dans la lettre donné par le user
@@ -47,3 +47,6 @@ def afficher(code_message):                       # exemples : erreur à affiche
         elif code_message == 'not_trouver':    # mot pas trouvé
             print('Tu n\'as pas trouvé le mot. :(')
             return
+
+            
+'''
