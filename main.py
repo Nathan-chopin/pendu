@@ -5,6 +5,9 @@
 
 import fn_pendu as fn
 
+from class_afficher import AFFICHER
+
+
 vie = fn.vie
 
 while(vie != 0):
@@ -18,9 +21,11 @@ while(vie != 0):
         else:
             vie -= 2
             fn.afficher("cons_not_trouver")
-    if fn.lettre_deviner(lettre) == -1:
+    if fn.est_dans_mot(lettre) == -1:
         fn.afficher("cons_erreur_lettre_donner")
-    elif fn.lettre_deviner(lettre):
+    elif fn.est_dans_mot(lettre) == 1:
+        fn.afficher("")
+    elif fn.est_dans_mot(lettre):
         fn.afficher("cons_inmot")
     else:
         fn.afficher("cons_notinmot")
