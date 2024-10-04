@@ -1,7 +1,7 @@
 # fichier fonction du TP pendu
 # Nathan Chopin
 # 04/10/24
-# TODO : tout
+# TODO : intégration tkinter
 
 from random import randint
 

@@ -1,14 +1,15 @@
 # main du TP pendu
 # Nathan Chopin
 # 04/10/24
-# TODO : tout
+# TODO : intégration tkinter
 
 import fn_pendu as fn
 
 
+
 vie = 8
 le_mot , mot_incomplet = fn.mot_a_trouver()
-mode_console = True
+mode_console = False
 
 
 
