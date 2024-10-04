@@ -14,7 +14,7 @@ mode_console = False
 
 
 while(vie != 0):
-    fn.affichage_mot_trouver(mode_console , mot_incomplet) #affiche le mot incomplet
+    fn.affichage_mot_incomplet(mode_console , mot_incomplet) #affiche le mot incomplet
     lettre = input("Devine une lettre, si tu penses avoir trouvé le mot tape 'mot deviner'(en cas d'érreur 2 vie seront perdues !) \n Tape ici : ")
     
     if lettre == 'mot deviner': # cas où le joueur pense avoir trouvé le mot

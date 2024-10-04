@@ -4,6 +4,7 @@
 # TODO : intégration tkinter
 
 from random import randint
+import fn_graphique as graph
 
 def creation_liste(nom_fichier):
     '''permet la lecteur d'un fichier txt'''
@@ -82,7 +83,7 @@ def affichage_victoire( bool_mode_console , str_mot , int_vie ):
     affichage(bool_mode_console,'Il te restait ' + str(int_vie) + ' chances.')
 
 
-def affichage_mot_trouver( bool_mode_console , liste_trouver):
+def affichage_mot_incomplet( bool_mode_console , liste_trouver):
     str_trouver = liste_to_str(liste_trouver)
     affichage(bool_mode_console,'Le mot est : ' + str_trouver)
 
