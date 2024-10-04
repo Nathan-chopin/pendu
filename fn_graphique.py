@@ -3,3 +3,8 @@
 # 04/10/24
 # TODO : tout
 
+from tkinter import Tk , Label , Button
+
+page = Tk()
+
+
