@@ -1,6 +1,6 @@
 # fichier fonction du TP pendu
 # Nathan Chopin
-# 30/09/24
+# 04/10/24
 # TODO : tout
 
 from random import randint
@@ -30,7 +30,8 @@ def supprime_accent(ligne):
 
 def mot_a_trouver():
     mot = liste_mots[randint(0 , len(liste_mots) - 1)] #choisi un mort aléatoire dans la liste
-    mot = supprime_accent(mot) 
+    mot = supprime_accent(mot)
+    mot.rstrip()
     return (mot , ["_"] * (len(mot)-1) )
 
 
@@ -60,25 +61,36 @@ def est_dans_mot(lettre,trouver,mot):
 
 
 def liste_to_str(liste):
+    '''transforme une liste en str'''
     str = ''
     for i in liste:
         str += i
     return str
 
+
 def affichage(bool_mode_console,text):
+    '''affiche le texte'''
     if bool_mode_console:
         print(text)
     else:
         return
+
 
 def affichage_victoire( bool_mode_console , str_mot , int_vie ):
     affichage(bool_mode_console,'Tu as trouvé le mot !')
     affichage(bool_mode_console,'Le mot est : ' + str_mot)
     affichage(bool_mode_console,'Il te restait ' + str(int_vie) + ' chances.')
 
+
 def affichage_mot_trouver( bool_mode_console , liste_trouver):
     str_trouver = liste_to_str(liste_trouver)
     affichage(bool_mode_console,'Le mot est : ' + str_trouver)
 
+
 def affichage_vie( bool_mode_console , int_vie):
     affichage(bool_mode_console,'Les chance restantes sont au nombre de :'+ str(int_vie))
+
+
+def affichage_game_over(bool_mode_console,str_mot):
+    affichage(bool_mode_console,'Game Over')
+    affichage(bool_mode_console,'Le mot à trouver étais : ' + str_mot)
