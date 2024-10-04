@@ -31,7 +31,7 @@ def supprime_accent(ligne):
 def mot_a_trouver():
     mot = liste_mots[randint(0 , len(liste_mots) - 1)] #choisi un mort aléatoire dans la liste
     mot = supprime_accent(mot)
-    mot.rstrip()
+    mot = mot.rstrip()
     return (mot , ["_"] * (len(mot)-1) )
 
 

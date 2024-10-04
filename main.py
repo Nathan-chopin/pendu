@@ -5,7 +5,6 @@
 
 import fn_pendu as fn
 
-#from class_afficher import AFFICHER
 
 vie = 8
 le_mot , mot_incomplet = fn.mot_a_trouver()
@@ -26,13 +25,13 @@ while(vie != 0):
             vie -= 2            
             fn.affichage(mode_console,'Tu n\'as pas trouvé le mot. :(')
     
-    elif lettre == 'cheatcodedev':          #cheat code pour moi
+    elif lettre == ' cheatcodedev':          #cheat code pour moi
         print('mode_console',mode_console)
         print('le mot',le_mot)
         print('mot incomplet',mot_incomplet)
         print('list to str (mot incomplet)',fn.liste_to_str(mot_incomplet))
     
-    elif lettre == 'exit':
+    elif lettre == ' exit': #cheat code pour moi
         break
     
     else :
